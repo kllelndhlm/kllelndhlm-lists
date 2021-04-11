@@ -1,0 +1,28 @@
+<p>Käyttäjä: {{ session.username }}</p>
+<a href="/logout">Vaihda käyttäjää</a>
+<hr>
+<p>Listan nimi: {{ session.list_name }}</p>
+<a href="/logout_list_name">Uusi lista</a>
+<hr>
+<form action="/send" method="POST">
+Kirjoita esittäjä:<br>
+<textarea name="artist" rows="1" cols="40"></textarea><br>
+esitys:<br>
+<textarea name="song" rows="1" cols="40"></textarea><br>
+tyylilaji:<br>
+<textarea name="genre" rows="1" cols="40"></textarea><br>
+ja vuosi:<br>
+<textarea name="year" rows="1" cols="40"></textarea>
+<br>
+<input type="submit" value="Lisaä rivi">
+</form>
+<hr>
+<a href="/">Lista valmis!</a>
+<hr>
+Listan esitysten määrä: {{ count }}
+<hr>
+{% for row in list %}
+{{ row [0] }}, {{ row [1] }}, {{row [2]}}, {{ row [3] }}, {{ row [4] }}, {{ row [5] }}
+<hr>
+{% endfor %}
+

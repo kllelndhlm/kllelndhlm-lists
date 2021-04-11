@@ -1,0 +1,16 @@
+{% if session.username %}
+<p>Käyttäjä: {{ session.username }}</p>
+<a href="/logout">Vaihda käyttäjää</a>
+<hr>
+<a href="/new_list_name">Luo uusi lista</a>
+<hr>
+<a href="/statistics">Katso kooste</a>
+{% else %}
+<form action="/login" method="POST">
+<p>Käyttäjä:<br>
+<input type="text" name="username"></p>
+<p>Salasana::<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Kirjaudu">
+</form>
+{% endif %}
