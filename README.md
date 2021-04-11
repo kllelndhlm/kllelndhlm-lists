@@ -13,11 +13,12 @@ Sovelluksessa näkyy soittolistoja. Soittolistat voivat koostua esimerkiksi kons
 # Sovelluksen nykyinen tilanne
 
 - käyttäjä voi kirjautua sisään ja ulos sekä luoda itselleen tunnuksen
+
 ⋅⋅⋅ - käyttäjä eikä salasana ei vielä tallennu, eikä salasanaa tarkisteta
 - käyttäjä voi katsoa soittolistoihin tallennetuista muuttujista muodostettuja listoja
 - käyttäjä voi lisätä soittolistojaan
 
 # Heroku
 
-Sovellus on testattavissa osoitteessa [https://kllelndhlm-lists.herokuapp.com/]([https://kllelndhlm-lists.herokuapp.com/)
+Sovellus on testattavissa osoitteessa [https://kllelndhlm-lists.herokuapp.com/](https://kllelndhlm-lists.herokuapp.com/)
 - käyttäjä voi tehdä Sovelluksen nykyinen tilanne-kappaleessa kerrotut asiat
