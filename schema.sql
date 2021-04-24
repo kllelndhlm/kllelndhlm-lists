@@ -1,12 +1,12 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    username TEXT,
+    username TEXT UNIQUE,
     password TEXT
 );
 CREATE TABLE entries (
     id SERIAL PRIMARY KEY,
     username TEXT,
-    entry_name TEXT,
+    list_name TEXT UNIQUE,
     artist TEXT,
     song TEXT,
     genre TEXT,
