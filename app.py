@@ -14,8 +14,8 @@ db = SQLAlchemy(app)
 def index():
     return render_template("index.html")
 
-#@app.route("/login",methods=["POST"])
-#def login():
+@app.route("/login",methods=["POST"])
+def login():
     username = request.form["username"]
     password = request.form["password"]
     sql = "SELECT password FROM users WHERE username=:username"
