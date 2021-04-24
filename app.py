@@ -18,17 +18,22 @@ def index():
 def login():
     username = request.form["username"]
     password = request.form["password"]
-    # TODO: check username and password
-    session["username"] = username
-    return redirect("/")
+    sql = "SELECT password FROM users WHERE username=:username"
+    result = db.session.execute(sql, {"username":username})
+    user = result.fetchone()
+    hash_value = user[0]
+    if check_password_hash(hash_value,password):
+        session["username"] = username
+        return redirect("/")
+    else:
+        return redirect("/")
 
 @app.route("/login",methods=["POST"])
 def register():
-    username = request.form["new_username"]
+    new_username = request.form["new_username"]
     new_password = request.form["new_password"]
-    session["new_username"] = new_username
     hash_value = generate_password_hash(new_password)
-    sql = "INSERT INTO users (username,password) VALUES (:new_username,:new_password)"
+    sql = "INSERT INTO users (username,password) VALUES (:username,:password)"
     db.session.execute(sql, {"username":new_username,"password":hash_value})
     db.session.commit()
     return redirect("/")
