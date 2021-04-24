@@ -14,8 +14,8 @@ db = SQLAlchemy(app)
 def index():
     return render_template("index.html")
 
-#@app.route("/login",methods=["POST"])
-#def login():
+@app.route("/login",methods=["POST"])
+def login():
     username = request.form["username"]
     password = request.form["password"]
     sql = "SELECT password FROM users WHERE username=:username"
@@ -30,7 +30,7 @@ def index():
     else:
         return redirect("/")
 
-@app.route("/login",methods=["POST"])
+app.route("/login",methods=["POST"])
 def register():
     new_username = request.form["new_username"]
     new_password = request.form["new_password"]
@@ -39,6 +39,8 @@ def register():
     db.session.execute(sql, {"username":new_username,"password":hash_value})
     db.session.commit()
     return redirect("/")
+
+
 
 @app.route("/logout")
 def logout():

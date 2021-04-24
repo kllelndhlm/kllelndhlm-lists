@@ -6,7 +6,7 @@ CREATE TABLE users (
 CREATE TABLE list (
     id SERIAL PRIMARY KEY,
     username TEXT,
-    list_name TEXT UNIQUE,
+    list_name TEXT,
     artist TEXT,
     song TEXT,
     genre TEXT,
