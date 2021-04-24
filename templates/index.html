@@ -7,10 +7,17 @@
 <a href="/statistics">Katso kooste</a>
 {% else %}
 <form action="/login" method="POST">
+<p>Kirjaudu sisään:<br>
 <p>Käyttäjä:<br>
 <input type="text" name="username"></p>
 <p>Salasana::<br>
 <input type="password" name="password"></p>
+<input type="submit" value="Kirjaudu">
+<p>Rekisteröidy:<br>
+<p>Uusi käyttäjä:<br>
+<input type="text" name="new_username"></p>
+<p>Salasana::<br>
+<input type="password" name="new_password"></p>
 <input type="submit" value="Kirjaudu">
 </form>
 {% endif %}

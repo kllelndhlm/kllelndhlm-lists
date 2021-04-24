@@ -18,11 +18,19 @@ def index():
 def login():
     username = request.form["username"]
     password = request.form["password"]
+    # TODO: check username and password
     session["username"] = username
-#    hash_value = generate_password_hash(password)
-#    sql = "INSERT INTO users (username,password) VALUES (:username,:password)"
-#    db.session.execute(sql, {"username":username,"password":hash_value})
-#    db.session.commit()
+    return redirect("/")
+
+@app.route("/login",methods=["POST"])
+def register():
+    username = request.form["new_username"]
+    new_password = request.form["new_password"]
+    session["new_username"] = new_username
+    hash_value = generate_password_hash(new_password)
+    sql = "INSERT INTO users (username,password) VALUES (:new_username,:new_password)"
+    db.session.execute(sql, {"username":new_username,"password":hash_value})
+    db.session.commit()
     return redirect("/")
 
 @app.route("/logout")
@@ -88,6 +96,4 @@ def statistics():
     sql = "SELECT year, COUNT(year) AS year_occurence FROM list GROUP BY year ORDER BY year_occurence DESC"
     result = db.session.execute(sql)
     most_frequent_year = result.fetchall()
-
-
     return render_template("statistics.html", count=count, most_frequent_artist = most_frequent_artist, most_frequent_song = most_frequent_song,  most_frequent_genre =  most_frequent_genre, most_frequent_year = most_frequent_year)
