@@ -14,14 +14,16 @@ db = SQLAlchemy(app)
 def index():
     return render_template("index.html")
 
-@app.route("/login",methods=["POST"])
-def login():
+#@app.route("/login",methods=["POST"])
+#def login():
     username = request.form["username"]
     password = request.form["password"]
     sql = "SELECT password FROM users WHERE username=:username"
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
     hash_value = user[0]
+    if user == None:
+        return redirect("/")
     if check_password_hash(hash_value,password):
         session["username"] = username
         return redirect("/")
