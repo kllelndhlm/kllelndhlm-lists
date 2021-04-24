@@ -3,7 +3,7 @@ CREATE TABLE users (
     username TEXT UNIQUE,
     password TEXT
 );
-CREATE TABLE entries (
+CREATE TABLE list (
     id SERIAL PRIMARY KEY,
     username TEXT,
     list_name TEXT UNIQUE,
