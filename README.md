@@ -4,8 +4,8 @@ Sovelluksessa näkyy soittolistoja. Soittolistat voivat koostua esimerkiksi kons
 
 - käyttäjä voi kirjautua sisään ja ulos sekä luoda itselleen tunnuksen
 - käyttäjä voi selailla soittolistoja
-- käyttäjä voi hakea soittolistoista muodostettuja tilastoja
-- käyttäjä voi lisätä soittolistojaan
+- käyttäjä voi katsoa soittolistoihin tallennetuista muuttujista muodostettuja tilastoja
+- käyttäjä voi lisätä tietokantaan soittolistoja
 - käyttäjä voi kommentoida soittolistoja
 - ylläpitäjä voi editoida ja poistaa soittolistoja
 - ylläpitäjä voi moderoida kommentointia
@@ -13,12 +13,10 @@ Sovelluksessa näkyy soittolistoja. Soittolistat voivat koostua esimerkiksi kons
 # Sovelluksen nykyinen tilanne
 
 - käyttäjä voi kirjautua sisään ja ulos sekä luoda itselleen tunnuksen
-
-⋅⋅⋅ - käyttäjä eikä salasana ei vielä tallennu, eikä salasanaa tarkisteta
-- käyttäjä voi katsoa soittolistoihin tallennetuista muuttujista muodostettuja listoja
-- käyttäjä voi lisätä soittolistojaan
+- käyttäjä voi katsoa soittolistoihin tallennetuista muuttujista muodostettuja tilastoja
+- käyttäjä voi lisätä tietokantaan soittolistoja
 
 # Heroku
 
 Sovellus on testattavissa osoitteessa [https://kllelndhlm-lists.herokuapp.com/](https://kllelndhlm-lists.herokuapp.com/)
-- käyttäjä voi tehdä Sovelluksen nykyinen tilanne-kappaleessa kerrotut asiat
+- Sovelluksen nykyinen tilanne-kappaleessa luetellut toiminnallisuudet ovat testattavissa
