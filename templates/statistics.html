@@ -1,11 +1,25 @@
 <hr>
 Listojen määrä: {{ count }}
 <hr>
-Artistit esiintyvyysjärjestyksessä (suluissa kerrat): {{ most_frequent_artist}}
+Artistit esiintyvyysjärjestyksessä (suluissa kerrat):
+<p> {% for row in  most_frequent_artist %}</p>
+<p> {{ row [0] }} ({{ row [1] }})</p>
+{% endfor %}
 <hr>
-Laulut esiintyvyysjärjestyksessä (suluissa kerrat): {{ most_frequent_song}}
+Laulut esiintyvyysjärjestyksessä (suluissa kerrat):
+<p> {% for row in  most_frequent_song %}</p>
+<p> {{ row [0] }}: {{ row [1] }} ({{ row [2] }})</p>
+{% endfor %}
 <hr>
-Tyylilajit esiintyvyysjärjestyksessä (suluissa kerrat): {{ most_frequent_genre}}
+Tyylilajit esiintyvyysjärjestyksessä (suluissa kerrat):
+<p> {% for row in  most_frequent_genre %}</p>
+<p> {{ row [0] }} ({{ row [1] }})</p>
+{% endfor %}
 <hr>
-Vuodet esiintyvyysjärjestyksessä (suluissa kerrat): {{ most_frequent_year}}
+Vuodet esiintyvyysjärjestyksessä (suluissa kerrat):
+<p> {% for row in  most_frequent_year %}</p>
+<p> {{ row [0] }} ({{ row [1] }})</p>
+{% endfor %}
+<hr>
+<a href="/">Takaisin</a>
 <hr>
