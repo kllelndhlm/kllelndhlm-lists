@@ -15,6 +15,7 @@ ja vuosi:<br>
 <textarea name="year" rows="1" cols="40"></textarea>
 <br>
 <input type="submit" value="Lisaä rivi">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <hr>
 <a href="/">Lista valmis!</a>

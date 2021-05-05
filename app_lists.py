@@ -1,6 +1,7 @@
-from flask import session, render_template, redirect
+from flask import session, render_template, redirect, request
 from db import db
 from werkzeug.security import check_password_hash, generate_password_hash
+import secrets
 
 def new_list(session_list_name):
     sql = "SELECT COUNT(*) FROM list WHERE list_name=:session_list_name"
@@ -11,9 +12,9 @@ def new_list(session_list_name):
     list = result.fetchall()
     return render_template("new_list.html", count=count, list=list)
 
-def insert_list_row(username, list_name, artist, song, genre, year):
-    sql = "INSERT INTO list (username, list_name, artist, song, genre, year) VALUES (:username, :list_name, :artist, :song, :genre, :year)"
-    db.session.execute(sql, {"username":username, "list_name":list_name, "artist":artist, "song":song, "genre":genre, "year":year})
+def insert_list_row(username, list_name, artist, song, genre, year, visible):
+    sql = "INSERT INTO list (username, list_name, artist, song, genre, year, visible) VALUES (:username, :list_name, :artist, :song, :genre, :year, :visible)"
+    db.session.execute(sql, {"username":username, "list_name":list_name, "artist":artist, "song":song, "genre":genre, "year":year, "visible":visible})
     db.session.commit()
     return True
 

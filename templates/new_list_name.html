@@ -8,4 +8,5 @@
 <p>Listan nimi:<br>
 <input type="text" name="list_name"></p>
 <input type="submit" value="Lisää nimi">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>

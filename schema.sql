@@ -10,5 +10,6 @@ CREATE TABLE list (
     artist TEXT,
     song TEXT,
     genre TEXT,
-    year TEXT
+    year TEXT,
+    visible INT
 );
