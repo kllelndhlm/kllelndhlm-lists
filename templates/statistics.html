@@ -1,22 +1,28 @@
 <hr>
 Listojen määrä: {{ count }}
 <hr>
-Artistit esiintyvyysjärjestyksessä (suluissa kerrat):
+<hr>
+Listat
+<p> {% for row in distinct_list %}</p>
+<a href="/list_page/{{ row [0] }}"> {{ row [0] }}</a>
+{% endfor %}
+<hr>
+TOP 3 Artistit
 <p> {% for row in  most_frequent_artist %}</p>
 <p> {{ row [0] }} ({{ row [1] }})</p>
 {% endfor %}
 <hr>
-Laulut esiintyvyysjärjestyksessä (suluissa kerrat):
+TOP 3 Esitykset
 <p> {% for row in  most_frequent_song %}</p>
 <p> {{ row [0] }}: {{ row [1] }} ({{ row [2] }})</p>
 {% endfor %}
 <hr>
-Tyylilajit esiintyvyysjärjestyksessä (suluissa kerrat):
+TOP 3 Tyylilajit
 <p> {% for row in  most_frequent_genre %}</p>
 <p> {{ row [0] }} ({{ row [1] }})</p>
 {% endfor %}
 <hr>
-Vuodet esiintyvyysjärjestyksessä (suluissa kerrat):
+TOP 3 Vuodet
 <p> {% for row in  most_frequent_year %}</p>
 <p> {{ row [0] }} ({{ row [1] }})</p>
 {% endfor %}

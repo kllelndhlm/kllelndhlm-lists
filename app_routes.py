@@ -87,3 +87,7 @@ def insert_list_row():
 @app.route("/statistics")
 def statistics():
     return app_lists.statistics()
+
+@app.route("/list_page/<string:list_name>", methods=["GET"])
+def list_page(list_name):
+    return app_lists.list_page(list_name)

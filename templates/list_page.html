@@ -1,0 +1,5 @@
+<p>Lista: {{ page_name }}</p>
+<p>Laatinut: {{ list[0][1] }}</p>
+{% for row in list %}
+<p>{{ row [3] }}: {{ row [4] }} | {{ row [5] }} ({{ row [6] }})</p>
+{% endfor %}
