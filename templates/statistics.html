@@ -1,11 +1,29 @@
 <hr>
 Listojen määrä: {{ count }}
 <hr>
-<hr>
-Listat
+Listat:
 <p> {% for row in distinct_list %}</p>
 <a href="/list_page/{{ row [0] }}"> {{ row [0] }}</a>
+<p> Laatinut: {{ row [1] }} </p>
+
+{% if session.username == row[1] %}
+<form action="/hide_list" method="POST">
+<input type="submit" value="Piilota lista">
+<input type="hidden" name="list_id" value="{{ row[0] }}">
+<input type="hidden" name="list_name" value="{{ page_name }}">
+</form>
+{% endif %}
+
+{% if session.username == "admin" %}
+<form action="/hide_list" method="POST">
+<input type="submit" value="Piilota lista">
+<input type="hidden" name="list_id" value="{{ row[0] }}">
+<input type="hidden" name="list_name" value="{{ page_name }}">
+</form>
+{% endif %}
+
 {% endfor %}
+
 <hr>
 TOP 3 Artistit
 <p> {% for row in  most_frequent_artist %}</p>

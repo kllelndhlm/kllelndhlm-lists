@@ -1,6 +1,6 @@
 from app import app
 from db import db
-import db, register_login, app_lists
+import db, register_login, app_lists, app_comments
 from flask import Flask
 from flask import redirect, render_template, request, session, abort
 from os import getenv
@@ -91,3 +91,38 @@ def statistics():
 @app.route("/list_page/<string:list_name>", methods=["GET"])
 def list_page(list_name):
     return app_lists.list_page(list_name)
+
+@app.route("/send_comment", methods=["GET","POST"])
+def send_comment():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+    username = session["username"]
+    list_name = request.form["list_name"]
+    content = request.form["comment"]
+    visible = 1
+    if app_comments.send_comment(username, list_name, content, visible):
+        return list_page(list_name)
+    else:
+        return render_template("error.html",message="Jotain meni pieleen :|")
+
+@app.route("/hide_comment", methods=["GET","POST"])
+def hide_comment():
+    comment_id = request.form["comment_id"]
+    list_name = request.form["list_name"]
+    visible = 0
+    if app_comments.hide_comment(comment_id, visible):
+        return list_page(list_name)
+    else:
+        return render_template("error.html",message="Jotain meni pieleen :|")
+
+@app.route("/hide_list", methods=["GET","POST"])
+def hide_list():
+    list_id = request.form["list_id"]
+    list_name = request.form["list_name"]
+    visible = 0
+    if app_lists.hide_list(list_id, visible):
+        return redirect("/statistics")
+    else:
+        return render_template("error.html",message="Jotain meni pieleen :|")
+
+

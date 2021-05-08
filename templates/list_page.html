@@ -3,3 +3,37 @@
 {% for row in list %}
 <p>{{ row [3] }}: {{ row [4] }} | {{ row [5] }} ({{ row [6] }})</p>
 {% endfor %}
+{% for row in comments %}
+<hr>
+<p>{{ row [1] }}:</p>
+<p> {{ row [3] }}</p>
+<p> ({{ row [5] }})</p>
+
+{% if session.username == row[1] %}
+<form action="/hide_comment" method="POST">
+<input type="submit" value="Piilota kommentti">
+<input type="hidden" name="comment_id" value="{{ row[0] }}">
+<input type="hidden" name="list_name" value="{{ page_name }}">
+</form>
+{% endif %}
+
+{% if session.username == "admin" %}
+<form action="/hide_comment" method="POST">
+<input type="submit" value="Piilota kommentti">
+<input type="hidden" name="comment_id" value="{{ row[0] }}">
+<input type="hidden" name="list_name" value="{{ page_name }}">
+</form>
+{% endif %}
+
+{% endfor %}
+{% if session.username %}
+<hr>
+<form action="/send_comment" method="POST">
+<p>Kommentoi:</p>
+<textarea name="comment" rows="3" cols="40"></textarea>
+<br>
+<input type="submit" value="Lähetä">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+<input type="hidden" name="list_name" value="{{ page_name }}">
+</form>
+{% endif %}
