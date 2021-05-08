@@ -13,3 +13,11 @@ CREATE TABLE list (
     year TEXT,
     visible INT
 );
+CREATE TABLE message (
+    id SERIAL PRIMARY KEY,
+    username TEXT,
+    list_name TEXT,
+    content TEXT,
+    visible INT,
+    sent_at TIMESTAMP
+);
