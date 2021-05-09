@@ -1,8 +1,30 @@
-<p>Käyttäjä: {{ session.username }}</p>
-<a href="/logout">Vaihda käyttäjää</a>
+!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/static/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+  <div class="header">
+        <h1>Listasovellus</h1>
+  </div>
+    <nav>
+      <ul>
+      {% if session.username %}
+      <p>Käyttäjä: {{ session.username }}</p>
+      <li><a href="/logout">Vaihda käyttäjää</a></li>
+      <li><a href="/new_list_name">Luo uusi lista</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    {% else %}
+      <li><a href="/login">Kirjaudu sisään</a></li>
+      <li><a href="/register">Luo uusi tunnus</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    </ul>
+    {% endif %}
+  </nav>
+</body>
+<body>
 <hr>
 <p>Listan nimi: {{ session.list_name }}</p>
-<a href="/logout_list_name">Uusi lista</a>
+<li><a href="/logout_list_name">Peru listan luonti</a></li>
 <hr>
 <form action="/insert_list_row" method="POST">
 Kirjoita esittäjä:<br>
@@ -18,7 +40,7 @@ ja vuosi:<br>
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <hr>
-<a href="/">Lista valmis!</a>
+<li><a href="/">Lista valmis!</a></li>
 <hr>
 Listan esitysten määrä: {{ count }}
 <hr>
@@ -26,4 +48,4 @@ Listan esitysten määrä: {{ count }}
 {{ row [0] }}, {{ row [1] }}, {{row [2]}}, {{ row [3] }}, {{ row [4] }}, {{ row [5] }}
 <hr>
 {% endfor %}
-
+</body>

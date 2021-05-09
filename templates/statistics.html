@@ -1,49 +1,74 @@
-<hr>
-Listojen määrä: {{ count }}
-<hr>
-Listat:
-<p> {% for row in distinct_list %}</p>
-<a href="/list_page/{{ row [0] }}"> {{ row [0] }}</a>
-<p> Laatinut: {{ row [1] }} </p>
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/static/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% if session.username == row[1] %}
-<form action="/hide_list" method="POST">
-<input type="submit" value="Piilota lista">
-<input type="hidden" name="list_id" value="{{ row[0] }}">
-<input type="hidden" name="list_name" value="{{ page_name }}">
-</form>
-{% endif %}
+<body>
+  <div class="header">
+        <h1>Listasovellus</h1>
+  </div>
+    <nav>
+      <ul>
+      {% if session.username %}
+      <p>Käyttäjä: {{ session.username }}</p>
+      <li><a href="/logout">Vaihda käyttäjää</a></li>
+      <li><a href="/new_list_name">Luo uusi lista</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    {% else %}
+      <li><a href="/login">Kirjaudu sisään</a></li>
+      <li><a href="/register">Luo uusi tunnus</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    </ul>
+    {% endif %}
+  </nav>
+  <hr>
+  Listojen määrä: {{ count }}
+  <hr>
+  Listat:
+    <p> {% for row in distinct_list %}</p>
+    <a href="/list_page/{{ row [0] }}"> {{ row [0] }}</a>
+    <p> Laatinut: {{ row [1] }} </p>
 
-{% if session.username == "admin" %}
-<form action="/hide_list" method="POST">
-<input type="submit" value="Piilota lista">
-<input type="hidden" name="list_id" value="{{ row[0] }}">
-<input type="hidden" name="list_name" value="{{ page_name }}">
-</form>
-{% endif %}
+    {% if session.username == row[1] %}
+    <form action="/hide_list" method="POST">
+    <input type="submit" value="Piilota lista">
+    <input type="hidden" name="list_id" value="{{ row[0] }}">
+    <input type="hidden" name="list_name" value="{{ page_name }}">
+    </form>
+    {% endif %}
 
-{% endfor %}
+    {% if session.username == "admin" %}
+    <form action="/hide_list" method="POST">
+    <input type="submit" value="Piilota lista">
+    <input type="hidden" name="list_id" value="{{ row[0] }}">
+    <input type="hidden" name="list_name" value="{{ page_name }}">
+    </form>
+    {% endif %}
+  {% endfor %}
 
-<hr>
-TOP 3 Artistit
-<p> {% for row in  most_frequent_artist %}</p>
-<p> {{ row [0] }} ({{ row [1] }})</p>
-{% endfor %}
-<hr>
-TOP 3 Esitykset
-<p> {% for row in  most_frequent_song %}</p>
-<p> {{ row [0] }}: {{ row [1] }} ({{ row [2] }})</p>
-{% endfor %}
-<hr>
-TOP 3 Tyylilajit
-<p> {% for row in  most_frequent_genre %}</p>
-<p> {{ row [0] }} ({{ row [1] }})</p>
-{% endfor %}
-<hr>
-TOP 3 Vuodet
-<p> {% for row in  most_frequent_year %}</p>
-<p> {{ row [0] }} ({{ row [1] }})</p>
-{% endfor %}
-<hr>
-<a href="/">Takaisin</a>
-<hr>
+  <hr>
+
+  TOP 3 Artistit
+  <p> {% for row in  most_frequent_artist %}</p>
+  <p> {{ row [0] }} ({{ row [1] }})</p>
+  {% endfor %}
+  <hr>
+
+  TOP 3 Esitykset
+  <p> {% for row in  most_frequent_song %}</p>
+  <p> {{ row [0] }}: {{ row [1] }} ({{ row [2] }})</p>
+  {% endfor %}
+  <hr>
+
+  TOP 3 Tyylilajit
+  <p> {% for row in  most_frequent_genre %}</p>
+  <p> {{ row [0] }} ({{ row [1] }})</p>
+  {% endfor %}
+  <hr>
+
+  TOP 3 Vuodet
+  <p> {% for row in  most_frequent_year %}</p>
+  <p> {{ row [0] }} ({{ row [1] }})</p>
+  {% endfor %}
+  <hr>
+
+</body>

@@ -1,8 +1,31 @@
-<form action="/register" method="POST">
-<p>Luo uusi käyttäjätunnus:<br>
-<p>Uusi käyttäjä:<br>
-<input type="text" name="username"></p>
-<p>Salasana::<br>
-<input type="password" name="password"></p>
-<input type="submit" value="Rekisteröidy">
-</form>
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/static/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+  <div class="header">
+        <h1>Listasovellus</h1>
+  </div>
+    <nav>
+      <ul>
+      {% if session.username %}
+      <p>Käyttäjä: {{ session.username }}</p>
+      <li><a href="/logout">Vaihda käyttäjää</a></li>
+      <li><a href="/new_list_name">Luo uusi lista</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    {% else %}
+      <li><a href="/login">Kirjaudu sisään</a></li>
+      <li><a href="/register">Luo uusi tunnus</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    </ul>
+    {% endif %}
+  </nav>
+    <form action="/register" method="POST">
+    <p>Luo uusi käyttäjätunnus:<br>
+      <label for="username">Uusi käyttäjä:</label>
+      <input type="text" name="username">
+      <label for="password">Salasana:</label>
+      <input type="password" name="password">
+      <input id=button type="submit" value="Rekisteöidy">
+    </form>
+</body>

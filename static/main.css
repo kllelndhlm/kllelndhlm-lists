@@ -1,3 +1,12 @@
+.header {
+    font-weight: bold;
+    padding: 2em 1em;
+    font-size: 2em;
+    text-align: center;
+    margin-top: .5em;
+
+}
+
 body {
     margin: auto;
     max-width: 60em;
@@ -6,40 +15,40 @@ body {
     background-repeat: no-repeat;
     background-size: auto; 
 }
+
 nav li {
     display: inline-block;
     padding: .5em;
-    border-radius: .5em;
-    margin: .2em;
+    border-radius: .1em;
 }
+
 nav li a {
     text-decoration: none;
     color: white;
     background-color: purple;
     display: inline-block;
-    padding: .5em;
-    border-radius: .5em;
-    margin: .2em;
+    padding: .1em;
+    border-radius: .1em;
+    margin: auto;
 }
+
 nav li:hover {
     background-color: purple;
 }
-form {
-    display: block;
-    float: right;
-    padding: .5em;
-    background: orange;
-    border-radius: .5em;
-    display: grid;
-    max-width: 15em;
-    grid-template-columns: 5em 10em;
-    grid-row-gap: .3em;
-    margin-bottom: 2em;
-    margin-left: 2em;
-}
+
 nav ul {
     margin: auto;
     padding: 0;
-    margin: .5em;
+    text-align: center;
+}
+
+form {
+    padding: .5em;
+    background: orange;
+    border-radius: .1em;
+    margin-bottom: 2em;;
+    margin-top: 2em;
+    margin: 0 auto; 
+    max-width:250px;
     text-align: center;
 }
