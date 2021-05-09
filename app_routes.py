@@ -62,12 +62,12 @@ def new_list():
 @app.route("/logout")
 def logout():
     del session["username"]
+    del session["csrf_token"]
     return redirect("/")
 
 @app.route("/logout_list_name")
 def logout_list_name():
     del session["list_name"]
-    del session["csrf_token"]
     return redirect("/new_list_name")
 
 @app.route("/insert_list_row", methods=["GET","POST"])
