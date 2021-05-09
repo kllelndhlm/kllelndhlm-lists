@@ -1,9 +1,6 @@
 body {
-    background-image: url("/assets/conductor.jpg")
-    background-repeat: no-repeat;
-    background-size: auto; 
     margin: auto;
-    max-width: 60em;
+    max-width: 45em;
     font-family: "Helvetica", "Arial", sans-serif;
     background: white;
 }
