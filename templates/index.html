@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" type="text/css" href="/static/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<html>
-<head>
-   <style>
-       body {
-           background-image: url("/assets/conductor.jpg");
-           background-repeat: no-repeat;
-           background-size: auto; 
-       }
-   </style> 
-</head>
-<body> 
-  <h1>Listasovellus</h1>
+
+<body>
+    <h1>Listasovellus</h1>
     <nav>
-    {% if session.username %}
-    <p>Käyttäjä: {{ session.username }}</p>
       <ul>
-        <li><a href="/logout">Vaihda käyttäjää</a></li>
-        <li><a href="/new_list_name">Luo uusi lista</a></li>
-        <li><a href="/statistics">Katso kooste</a></li>
-      </ul>
+      {% if session.username %}
+      <p>Käyttäjä: {{ session.username }}</p>
+      <li><a href="/logout">Vaihda käyttäjää</a></li>
+      <li><a href="/new_list_name">Luo uusi lista</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
     {% else %}
-      <ul>
-        <li><a href="/login">Kirjaudu sisään</a></li>
-        <li><a href="/register">Luo uusi tunnus</a></li>
-        <li><a href="/statistics">Katso kooste</a></li>
-      </ul>
+      <li><a href="/login">Kirjaudu sisään</a></li>
+      <li><a href="/register">Luo uusi tunnus</a></li>
+      <li><a href="/statistics">Katso kooste</a></li>
+    </ul>
     {% endif %}
   </nav>
 </body>
-</html>
